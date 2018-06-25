@@ -1,12 +1,4 @@
 global.__basedir = __dirname;
-const fontawesome = require('@fortawesome/fontawesome');
-const faUser = require('@fortawesome/fontawesome-free-solid/faUser');
-const faCircle = require('@fortawesome/fontawesome-free-regular/faCircle');
-const faFacebook = require('@fortawesome/fontawesome-free-brands/faFacebook');
-
-fontawesome.library.add(faUser);
-fontawesome.library.add(faCircle);
-fontawesome.library.add(faFacebook);
 
 const express = require('express');
 const app = express();
@@ -29,7 +21,7 @@ app.engine("handlebars", exphbs({
 app.set("view engine",'handlebars');
 
 //routes
-let routes = require(path.join(__basedir, ''));
+let routes = require(path.join(__basedir, 'routes'))(express);
 app.use(routes);
 
 //start server
