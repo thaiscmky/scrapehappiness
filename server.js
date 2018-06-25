@@ -6,7 +6,7 @@ const path = require('path');
 const bodyParser= require("body-parser");
 const exphbs = require("express-handlebars");
 
-app.use(express.static('app/public'));
+app.use(express.static('public'));
 
 const PORT = process.env.PORT || 3000;
 
@@ -21,8 +21,8 @@ app.engine("handlebars", exphbs({
 app.set("view engine",'handlebars');
 
 //routes
-let routes = require(path.join(__basedir, 'routes'))(express);
-app.use(routes);
+let Routes = require(path.join(__basedir, 'routes'));
+app.use(new Routes(express).getRouter());
 
 //start server
 app.listen(PORT,function(){

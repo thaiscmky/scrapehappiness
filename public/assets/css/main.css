@@ -1,55 +1,51 @@
-#header {
-    background-color: #f2e918;
-    padding: 30px;
-    top: 0;
-}
-#mid-column {
-    margin-left: 3em;
-    margin-right: -1em;
-}
-ul,
-li {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-li:hover {
-    color: white;
-    text-shadow:
-            -1px -1px 0 #000,
-            1px -1px 0 #000,
-            -1px 1px 0 #000,
-            1px 1px 0 #000;
-}
-#notdevoured li:hover {
-    cursor: pointer;
-}
-#devoured li:hover {
-    cursor: not-allowed;
-}
-ul {
-    margin: 2em 0;
+@import url(https://fonts.googleapis.com/css?family=Arvo);
+
+html, body {
+    height: 100%;
 }
 
-li {
-    margin: 1em;
+body {
+    padding-top: 54px;
 }
-ul { border: solid 1px #000; padding-right: 2em; border-right: none; }
-#notdevoured {
-    margin-left: -2em;
+main {
+    min-height: 100%;
+}
+.jumbotron {
+    background: url("../imgs/everydayisanewstart.jpg");
+    color: #f1d47d;
+    font-family: Arvo;
+    margin-top: -68px;
+    margin-bottom: -34px;
+}
+#wrapper {
+    overflow:auto;
+}
+footer {
+    position: relative;
+    margin-top: -4px;
+    clear:both;
 }
 
-#devoured {
-    margin-right: -2em;
-}
-li:before {
-    font-family: "Font Awesome 5 Free";
-    content: '\f0c9';
-    float: left;
-    margin-left: -1.5em;
-    color: #0074D9;
+.text-shadow {
+    font-weight: bold;
+    text-shadow: -3px -3px 20px #222, 3px -3px 0 #222, -3px 3px 0 #222, 3px 3px 0 #222, 4px 4px 0 #0e0d0d;
+    line-height: 0.8em;
+    letter-spacing: 0.1em;
+    transform: scaleY(0.7);
+    -webkit-transform: scaleY(0.7);
+    -moz-transform: scaleY(0.7);
+
 }
 
-.link {
-    font-size: 0.45em;
+.text-small {
+    font-size: 0.7em;
+}
+.text-mid {
+    font-size: 5em;
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
 }

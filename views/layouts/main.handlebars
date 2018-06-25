@@ -26,18 +26,23 @@
         <!-- Navigation -->
         {{> _navigation }}
         <!-- Page Content -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <h1 class="my-4">Happy Life Scraper
-                        <small>Lifehack Edition</small>
+        <main>
+            <div class="jumbotron text-shadow">
+                <div class="container">
+                    <h1 class="display-3 my-4 text-mid">Happy Life Scraper
+                        <br><small class="text-small">Lifehack Edition</small>
                     </h1>
-                    <!-- Article Post -->
-                    {{{ body }}}
                 </div>
             </div>
-        </div>
-
+            <div class="container" id="wrapper">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Article Post -->
+                        {{{ body }}}
+                    </div>
+                </div>
+            </div>
+        </main>
         {{> _footer}}
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"
                 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
