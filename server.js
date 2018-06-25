@@ -29,7 +29,7 @@ app.engine("handlebars", exphbs({
 app.set("view engine",'handlebars');
 
 //routes
-let routes = require(path.join(__basedir, '/app/controllers/burger_controller'));
+let routes = require(path.join(__basedir, ''));
 app.use(routes);
 
 //start server
