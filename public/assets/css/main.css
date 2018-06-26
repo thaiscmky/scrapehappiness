@@ -48,4 +48,20 @@ footer {
     body {
         padding-top: 56px;
     }
+    .card {
+        width: 50%;
+        float: left;
+    }
+    .cardbody {
+        height: 200px;
+    }
+
+    figure {
+        height: 300px;
+        overflow: hidden;
+    }
+    figure.article-image img{
+        display:block;
+        height:100%;
+    }
 }
