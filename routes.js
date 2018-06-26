@@ -9,11 +9,20 @@ function Routes(express){
     this.router = express.Router();
     this.router.get('/', (req, res) => {
         articleController.getArticles().then(articles => {
-            res.render('index', Object.assign(msg, {articles: articles}));
+            res.render('index', Object.assign(msg, {articles: articles, title: 'Articles'}));
         })
         .catch(err => {
             msg.error = err.message;
             res.redirect('/');
+        });
+    });
+
+    this.router.get('/saved', (req, res) => {
+        articleController.getSavedArticles().then(articles => {
+            res.render('index', Object.assign(msg, {articles: articles, title: 'Saved Articles', bookmarks: true}));
+        }).catch(err => {
+                msg.error = err.message;
+                res.redirect('/');
         });
     });
 
@@ -39,7 +48,22 @@ function Routes(express){
                 .catch(err => err);
        }).then( () => {
            res.redirect('/');
-       });
+       }).catch(err => {
+           msg.error = err.message;
+           res.redirect('/');
+       });;
+    });
+
+    this.router.get('/save/:id', (req, res) => {
+        resetMessages();
+        const article = articleController.bookmarkArticle(req.params.id);
+        article.then( () => {
+            msg.success = `Article ${req.params.id} saved`;
+            res.redirect('/saved');
+        }).catch(err => {
+            msg.error = err.message;
+            res.redirect('/');
+        });;
     });
 }
 

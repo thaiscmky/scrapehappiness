@@ -45,6 +45,12 @@ const article = {
             .then(dbArticles => dbArticles)
             .catch(err => err);
     },
+    getSavedArticles: function(){
+        return article.model.find({saved: true})
+            .populate('comments')
+            .then(dbArticles => dbArticles)
+            .catch(err => err);
+    },
     addComment: function(comment){
         return article.model.findOneAndUpdate({}, { $push: { comments: comment._id } }, { new: true })
             .then(articles => articles)
@@ -62,6 +68,11 @@ const article = {
                 if(err.code !== '11000')
                     return err;
             });
+    },
+    bookmarkArticle: function(id) {
+        return article.model.updateOne({_id: id}, {$set: {saved: true}})
+            .then(result => result)
+            .catch(err => err);
     }
 };
 
