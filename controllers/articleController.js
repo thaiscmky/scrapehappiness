@@ -9,6 +9,7 @@ let article = {
             .then(function (response) {
                 const $ = parent.scraper.load(response.data);
                 const post  = $('main').find('.article-card');
+                const documents = [];
                 post.each(function (i, element) {
                          const document = {};
                          document.title = $(element).find('.article-heading').find('a').text();
@@ -16,11 +17,26 @@ let article = {
                          document.link = $(element).find('.article-heading').find('a').attr('href');
                          document.byline = $(element).find('.article-author').children('.author-name').text();
                          document.byline += ' - ' + $(element).find('.article-author').children('.publish-since').text();
-                         if(typeof document.title !== 'undefined')
-                            article.saveArticle(document);
+                         if(typeof document.title !== 'undefined'){
+                             documents.push(document);
+                         }
+                            //article.saveArticle(document);
                 });
-
+                return documents;
              })
+            .then(documents => {
+
+                const bulkUpdate = documents.map(document => {
+                    return {
+                        updateOne: {
+                            filter: {title: document.title},
+                            update: {$set: document},
+                            upsert: true
+                        }}
+                });
+                return bulkUpdate;
+            })
+            .then(batch => article.saveArticles(batch))
             .catch(function(err) {
                 console.log(err.message);
             });
@@ -30,14 +46,17 @@ let article = {
             .then(dbArticles => dbArticles)
             .catch(err => err);
     },
-    saveArticle: function(document) {
-        article.model.update({title: document.title}, {$set: document}, {upsert: true})
-            .then(function (dbArticle) {
-                console.log(dbArticle);
+    saveArticles: function(documents) {
+
+        return article.model.bulkWrite(documents)
+            .then(function (bulkResult) {
+                const results = bulkResult.toJSON();
+                console.log(results);
+                return {updated: results.nInserted , newlyscraped: results.nUpserted};
             })
             .catch(function(err){
                 if(err.code !== '11000')
-                    console.log(err);
+                    return err;
             });
     }
 };
