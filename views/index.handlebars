@@ -1,4 +1,10 @@
 <h2>Articles</h2>
+<br>
+{{#unless articles}}
+    <div class="card mb-4">
+        <div class="card-body">There are no articles pulled. <a href="/scrape">Scrape for articles</a>?</div>
+    </div>
+{{/unless}}
 {{#each articles}}
 <div class="card mb-4" data-id="{{this.id}}">
     <img class="card-img-top" src="{{this.image}}" alt="Card image cap">

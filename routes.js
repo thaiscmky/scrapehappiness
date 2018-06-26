@@ -1,6 +1,7 @@
 const path = require('path');
 const articleController = path.join(__basedir, '/controllers/articleController');
 const userController = path.join(__basedir, '/controllers/userController');
+const commentController = path.join(__basedir, '/controllers/commentController');
 
 function Routes(express){
 

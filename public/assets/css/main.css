@@ -10,6 +10,7 @@ body {
 main {
     min-height: 100%;
 }
+
 .jumbotron {
     background: url("../imgs/everydayisanewstart.jpg");
     color: #f1d47d;
@@ -34,7 +35,6 @@ footer {
     transform: scaleY(0.7);
     -webkit-transform: scaleY(0.7);
     -moz-transform: scaleY(0.7);
-
 }
 
 .text-small {
