@@ -26,7 +26,14 @@ footer {
     margin-top: -4px;
     clear:both;
 }
-
+.article-comments .card-title{
+    text-transform: uppercase;
+    color: #18d4c4;
+}
+.article-comments .card-subtitle{
+    text-transform: uppercase;
+}
+.article-comments .card-subtitle small{ text-transform: none}
 .text-shadow {
     font-weight: bold;
     text-shadow: -3px -3px 20px #222, 3px -3px 0 #222, -3px 3px 0 #222, 3px 3px 0 #222, 4px 4px 0 #0e0d0d;
@@ -44,24 +51,13 @@ footer {
     font-size: 5em;
 }
 
+.comment-form h4
+{
+    margin-top: 20px;
+}
+
 @media (min-width: 992px) {
     body {
         padding-top: 56px;
-    }
-    .card {
-        width: 50%;
-        float: left;
-    }
-    .cardbody {
-        height: 200px;
-    }
-
-    figure {
-        height: 300px;
-        overflow: hidden;
-    }
-    figure.article-image img{
-        display:block;
-        height:100%;
     }
 }

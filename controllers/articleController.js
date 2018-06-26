@@ -1,7 +1,7 @@
 const Controller = require('./baseController.js');
 const parent = new Controller('Article');
 
-let article = {
+const article = {
     model: parent.model,
     request: parent.http,
     scrapeArticles: function(url) {
@@ -24,7 +24,6 @@ let article = {
                 return documents;
              })
             .then(documents => {
-
                 const bulkUpdate = documents.map(document => {
                     return {
                         updateOne: {
@@ -42,7 +41,13 @@ let article = {
     },
     getArticles: function(){
         return article.model.find({})
+            .populate('comments')
             .then(dbArticles => dbArticles)
+            .catch(err => err);
+    },
+    addComment: function(comment){
+        return article.model.findOneAndUpdate({}, { $push: { comments: comment._id } }, { new: true })
+            .then(articles => articles)
             .catch(err => err);
     },
     saveArticles: function(documents) {

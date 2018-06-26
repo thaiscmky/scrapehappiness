@@ -2,11 +2,14 @@
     <div class="article-comments">
         <h3>Comments</h3>
         {{#each this.comments}}
-        <div class="comment" data-id="{{this._id}}">
-            <h4>{{this.title}}</h4>
-            <p>{{this.body}}</p>
-            <small>By {{this.author}} on {{this.time}}</small>
-        </div>
+            <div class="card comment" data-id="{{this._id}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.title}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">By {{this.author}} <br><small>on {{this.time}}</small></h6>
+                    <p class="card-text">{{this.body}}</p>
+                </div>
+            </div>
         {{/each}}
     </div>
 {{/if}}
+

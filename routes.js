@@ -29,6 +29,18 @@ function Routes(express){
             res.redirect('/');
         });
     });
+
+    this.router.post('/addcomment/:id', (req, res) => {
+       resetMessages();
+       const comment = commentController.saveComment(req.body);
+       comment.then(comment => {
+            return articleController.addComment(comment)
+                .then(articles => articles)
+                .catch(err => err);
+       }).then( () => {
+           res.redirect('/');
+       });
+    });
 }
 
 function resetMessages(){

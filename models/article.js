@@ -6,6 +6,7 @@ const ArticleSchema = new Schema({
     image:  String,
     byline: { type: String, required: true},
     link:   { type: String, required: true},
+    saved:  { type: Boolean, default: false},
     comments: [
         { type: Schema.Types.ObjectId, ref: "Comment"}
     ]
