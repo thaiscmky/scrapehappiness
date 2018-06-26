@@ -13,8 +13,9 @@
     <div class="card-body">
         <h2 class="card-title">{{this.title}}</h2>
         <a href="#" class="btn btn-primary">Read More</a>
-        <a href="#" class="btn btn-primary">Leave a Comment</a>
-        <a href="#" class="btn btn-primary">Save for Later</a>
+        <span class="btn btn-primary">Leave a Comment</span>
+        <span href="#" class="btn btn-primary">Save for Later</span>
+        {{>_comments}}
     </div>
     <div class="card-footer text-muted">
         Posted by {{this.byline}}

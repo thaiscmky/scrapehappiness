@@ -20,7 +20,6 @@ let article = {
                          if(typeof document.title !== 'undefined'){
                              documents.push(document);
                          }
-                            //article.saveArticle(document);
                 });
                 return documents;
              })
